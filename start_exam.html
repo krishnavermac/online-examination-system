@@ -61,11 +61,12 @@
     </button>
 </form>
 
-<!-- TIMER SCRIPT (NO JINJA IN JS) -->
+<!-- ================= SCRIPT SECTION ================= -->
 <script>
 const form = document.getElementById("examForm");
 const timerElement = document.getElementById("timer");
 
+// ================= TIMER LOGIC =================
 let timeLeft = parseInt(form.dataset.duration, 10) * 60;
 
 function updateTimer() {
@@ -77,7 +78,7 @@ function updateTimer() {
         String(seconds).padStart(2, "0");
 
     if (timeLeft <= 0) {
-        alert("Time is up! Exam will be submitted automatically.");
+        alert("⏱️ Time is up! Exam will be submitted automatically.");
         form.submit();
         return;
     }
@@ -87,6 +88,33 @@ function updateTimer() {
 
 updateTimer();
 setInterval(updateTimer, 1000);
+
+// ================= ANTI-CHEATING LOGIC =================
+let violationCount = 0;
+
+// Detect tab / window switch
+document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+        violationCount++;
+        alert("⚠️ Tab switching detected! (" + violationCount + "/3)");
+
+        if (violationCount >= 3) {
+            alert("🚫 Multiple violations detected. Exam will be submitted.");
+            form.submit();
+        }
+    }
+});
+
+// Disable right-click
+document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+});
+
+// Disable copy, paste, cut, text selection
+document.addEventListener("copy", e => e.preventDefault());
+document.addEventListener("paste", e => e.preventDefault());
+document.addEventListener("cut", e => e.preventDefault());
+document.addEventListener("selectstart", e => e.preventDefault());
 </script>
 
 {% endblock %}
