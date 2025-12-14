@@ -65,27 +65,34 @@ exam_management_system/
 
 │   ├── app.py
 
-│   ├── auth.py
-
 │   ├── admin.py
 
 │   ├── student.py
 
-│   ├── models.py
+│   ├── auth.py
 
-│   ├── config.py
+│   ├── models.py
 
 │   ├── create_db.py
 
 │   ├── templates/
 
-│   └── static/
+│   │   ├── start_exam.html
+
+│   │   ├── analytics.html
+
+│   │   ├── admin_dashboard.html
+
+│   │   └── result.html
+
+│   └── static/css/style.css
 
 ├── requirements.txt
 
 ├── README.md
 
 └── .gitignore
+
 
 
 
@@ -118,6 +125,8 @@ exam_management_system/
 ->Add Questions Page 
 <img width="1884" height="879" alt="AddQuestionPage" src="https://github.com/user-attachments/assets/d410aa2a-37cf-408d-9d77-b3e57a2e096f" />
 
+->Analytics Dashboard
+
 
   STUDENT FLOW
   
@@ -143,6 +152,53 @@ exam_management_system/
 
 ->Database file excluded from version control
 
+
+**ANTI-CHEATING FEATURES**
+
+To ensure exam integrity, the system implements multiple client-side and server-side safeguards:
+
+**Client-Side Controls**
+
+1.Tab / window switch detection using Browser Visibility API
+
+2.Auto-submission after multiple violations
+
+3.Right-click disabled
+
+4.Copy / paste / text selection disabled
+
+**Server-Side Validation**
+
+1.Exam start time stored securely in session
+
+2.Submission time validated on backend
+
+3.Prevents manipulation of client-side timers
+
+These mechanisms together simulate real-world online proctoring constraints.
+
+
+**ANALYTICS DASHBOARD**
+
+The admin panel provides exam-level analytics using SQL aggregation queries:
+
+Exam-Wise Metrics:
+
+1.Total exam attempts
+
+2.Average score
+
+3.Highest score
+
+4.Lowest score
+
+**Benefits**
+
+1.Helps identify exam difficulty
+
+2.Provides performance trends
+
+3.Supports data-driven decision making
 
 
 **FUTURE ENHANCEMENTS**
