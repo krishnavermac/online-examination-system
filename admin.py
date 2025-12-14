@@ -28,18 +28,26 @@ def init_app(app):
             return "Unauthorized access"
 
         if request.method == "POST":
+            title = request.form.get("title")
+            duration = request.form.get("duration")
+            description = request.form.get("description", "")
+
+            if not title or not duration:
+                return "Invalid exam data", 400
+
             exam = Exam(
-                title=request.form["title"],
-                duration=int(request.form["duration"]),
-                description=request.form.get("description", "")
+                title=title,
+                duration=int(duration),
+                description=description
             )
             db.session.add(exam)
             db.session.commit()
+
             return redirect("/admin/dashboard")
 
         return render_template("create_exam.html")
 
-    # ================= ADD QUESTION =================
+    # ================= ADD QUESTION (FIXED) =================
     @app.route("/admin/add-question/<int:exam_id>", methods=["GET", "POST"])
     @login_required
     def add_question(exam_id):
@@ -49,20 +57,39 @@ def init_app(app):
         exam = Exam.query.get_or_404(exam_id)
 
         if request.method == "POST":
+            question_text = request.form.get("question_text")
+            option_a = request.form.get("option_a")
+            option_b = request.form.get("option_b")
+            option_c = request.form.get("option_c")
+            option_d = request.form.get("option_d")
+            correct_option = request.form.get("correct_option")
+
+            # Validation (prevents BadRequestKeyError)
+            if not all([question_text, option_a, option_b, option_c, option_d]):
+                return "All fields are required", 400
+
+            if correct_option not in ["A", "B", "C", "D"]:
+                return "Invalid correct option", 400
+
             question = Question(
                 exam_id=exam_id,
-                question_text=request.form["question"],
-                option_a=request.form["option_a"],
-                option_b=request.form["option_b"],
-                option_c=request.form["option_c"],
-                option_d=request.form["option_d"],
-                correct_option=request.form["correct_option"]
+                question_text=question_text,   # ✅ MATCHES HTML
+                option_a=option_a,
+                option_b=option_b,
+                option_c=option_c,
+                option_d=option_d,
+                correct_option=correct_option
             )
+
             db.session.add(question)
             db.session.commit()
+
             return redirect("/admin/dashboard")
 
-        return render_template("add_question.html", exam=exam)
+        return render_template(
+            "add_question.html",
+            exam=exam
+        )
 
     # ================= ANALYTICS DASHBOARD =================
     @app.route("/admin/analytics")
