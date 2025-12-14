@@ -1,23 +1,60 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, session
 from flask_login import login_required, current_user
+from datetime import datetime
+
 from models import Exam, Question, Result, Answer, db
+
 
 def init_app(app):
 
+    # ================= STUDENT DASHBOARD =================
     @app.route("/student/dashboard")
     @login_required
     def student_dashboard():
         exams = Exam.query.all()
-        return render_template("student_dashboard.html", exams=exams)
+        return render_template(
+            "student_dashboard.html",
+            exams=exams
+        )
 
+    # ================= START / SUBMIT EXAM =================
     @app.route("/student/start-exam/<int:exam_id>", methods=["GET", "POST"])
     @login_required
     def start_exam(exam_id):
+
         exam = Exam.query.get_or_404(exam_id)
         questions = Question.query.filter_by(exam_id=exam_id).all()
 
+        # ---------- EXAM START (GET) ----------
+        if request.method == "GET":
+            # Store exam start time in session (ANTI-CHEATING)
+            session["exam_start_time"] = datetime.now().timestamp()
+            session["exam_id"] = exam_id
+
+            return render_template(
+                "start_exam.html",
+                exam=exam,
+                questions=questions,
+                duration=exam.duration
+            )
+
+        # ---------- EXAM SUBMIT (POST) ----------
         if request.method == "POST":
+
+            # -------- SERVER-SIDE TIME VALIDATION --------
+            start_time = session.get("exam_start_time")
+
+            if not start_time:
+                return "Session expired. Please restart the exam."
+
+            time_taken = datetime.now().timestamp() - start_time
+
+            if time_taken > exam.duration * 60:
+                return "Time exceeded. Exam auto-submitted."
+
+            # -------- CREATE RESULT --------
             score = 0
+
             result = Result(
                 user_id=current_user.id,
                 exam_id=exam_id,
@@ -27,32 +64,35 @@ def init_app(app):
             db.session.add(result)
             db.session.commit()
 
+            # -------- EVALUATE ANSWERS --------
             for q in questions:
                 selected = request.form.get(f"question_{q.id}")
+
                 if selected == q.correct_option:
                     score += 1
 
-                db.session.add(Answer(
+                answer = Answer(
                     result_id=result.id,
                     question_id=q.id,
                     selected_option=selected
-                ))
+                )
+                db.session.add(answer)
 
+            # -------- UPDATE SCORE --------
             result.score = score
             db.session.commit()
 
+            # -------- CLEAN SESSION --------
+            session.pop("exam_start_time", None)
+            session.pop("exam_id", None)
+
             return redirect(f"/student/result/{result.id}")
 
-        return render_template(
-            "start_exam.html",
-            exam=exam,
-            questions=questions,
-            duration=exam.duration
-        )
-
+    # ================= RESULT PAGE =================
     @app.route("/student/result/<int:result_id>")
     @login_required
     def result(result_id):
+
         result = Result.query.get_or_404(result_id)
         exam = Exam.query.get(result.exam_id)
 
@@ -63,4 +103,9 @@ def init_app(app):
             .all()
         )
 
-        return render_template("result.html", exam=exam, result=result, answers=answers)
+        return render_template(
+            "result.html",
+            exam=exam,
+            result=result,
+            answers=answers
+        )
