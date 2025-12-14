@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>{{ exam.title }} - Result</h3>
+<h4>Score: {{ result.score }}/{{ result.total_questions }}</h4>
+
+{% for ans, q in answers %}
+<div class="card mb-2 {% if ans.selected_option == q.correct_option %}border-success{% else %}border-danger{% endif %}">
+    <div class="card-body">
+        <p>{{ q.question_text }}</p>
+        <p>Your answer: {{ ans.selected_option }}</p>
+        <p>Correct answer: {{ q.correct_option }}</p>
+    </div>
+</div>
+{% endfor %}
+
+<a href="/student/dashboard" class="btn btn-primary">Back</a>
+{% endblock %}

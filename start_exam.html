@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Start Exam{% endblock %}
+
+{% block content %}
+
+<!-- TIMER DISPLAY -->
+<div class="alert alert-warning text-center">
+    ⏱️ Time Remaining:
+    <strong><span id="timer"></span></strong>
+</div>
+
+<h3 class="dashboard-title">{{ exam.title }}</h3>
+<p class="text-muted">{{ exam.description }}</p>
+
+<form method="POST" id="examForm" data-duration="{{ duration }}">
+
+    {% for q in questions %}
+    <div class="card shadow mb-3">
+        <div class="card-body">
+
+            <p><strong>Q{{ loop.index }}.</strong> {{ q.question_text }}</p>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio"
+                       name="question_{{ q.id }}" value="A" required>
+                <label class="form-check-label">
+                    {{ q.option_a }}
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio"
+                       name="question_{{ q.id }}" value="B">
+                <label class="form-check-label">
+                    {{ q.option_b }}
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio"
+                       name="question_{{ q.id }}" value="C">
+                <label class="form-check-label">
+                    {{ q.option_c }}
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio"
+                       name="question_{{ q.id }}" value="D">
+                <label class="form-check-label">
+                    {{ q.option_d }}
+                </label>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+
+    <button class="btn btn-success w-100">
+        Submit Exam
+    </button>
+</form>
+
+<!-- TIMER SCRIPT (NO JINJA IN JS) -->
+<script>
+const form = document.getElementById("examForm");
+const timerElement = document.getElementById("timer");
+
+let timeLeft = parseInt(form.dataset.duration, 10) * 60;
+
+function updateTimer() {
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+
+    timerElement.textContent =
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+
+    if (timeLeft <= 0) {
+        alert("Time is up! Exam will be submitted automatically.");
+        form.submit();
+        return;
+    }
+
+    timeLeft--;
+}
+
+updateTimer();
+setInterval(updateTimer, 1000);
+</script>
+
+{% endblock %}
