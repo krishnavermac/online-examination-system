@@ -7,28 +7,47 @@ The system supports role-based access for Admin and Student, enabling real-world
 **KEY FEATURES**
 
 👨‍💼 **Admin Module**
+
 Secure admin authentication
+
 Create and manage exams
+
 Add multiple-choice questions (MCQs)
+
 Configure exam duration and evaluation rules
+
 Monitor student performance
 
+
 🎓 **Student Module**
+
 Secure student login and registration
+
 View available exams
+
 Attempt exams with a live timer
+
 Auto-submission on time expiry
+
 Instant result and score evaluation
 
+
 ⚙️ **System Features**
+
 Role-based authentication (Admin / Student)
+
 Timed online examinations
+
 Automated evaluation
+
 Database-driven exam management
+
 Clean MVC-based Flask architecture
 
 
+
 **TECH STACK**
+
 | Layer           | Technology         |
 | --------------- | ------------------ |
 | Backend         | Python, Flask      |
@@ -39,29 +58,51 @@ Clean MVC-based Flask architecture
 
 
 **Project Structure**
+
 exam_management_system/
+
 ├── online_exam_system/
+
 │   ├── app.py
+
 │   ├── auth.py
+
 │   ├── admin.py
+
 │   ├── student.py
+
 │   ├── models.py
+
 │   ├── config.py
+
 │   ├── create_db.py
+
 │   ├── templates/
+
 │   └── static/
+
 ├── requirements.txt
+
 ├── README.md
+
 └── .gitignore
 
 
+
 **APPLICATION WORKFLOW**
+
 1.Admin logs in
+
 2.Admin creates an exam and adds questions
+
 3.Student logs in
+
 4.Student selects and attempts exam
+
 5.System evaluates responses automatically
+
 6.Result is displayed instantly
+
 
 
 **SCREENSHOTS**
@@ -93,29 +134,48 @@ exam_management_system/
 
 
 **SECURITY CONSIDERATIONS**
+
 ->Passwords are securely hashed
+
 ->Role-based route access
+
 ->Session-based authentication
+
 ->Database file excluded from version control
 
 
+
 **FUTURE ENHANCEMENTS**
+
 ->REST API support
+
 ->React / frontend framework integration
+
 ->Advanced analytics and reports
+
 ->Anti-cheating mechanisms
+
 ->Cloud deployment (AWS / Render)
 
 
+
 **USE CASE**
+
 This system can be used by:
+
 ->Colleges and universities
+
 ->Training institutes
+
 ->Online assessment platforms
+
 ->Internal recruitment tests
 
 
 **AUTHOR**
+
 Krishna Verma
+
 Electronics & Communication Engineering (ECE), IIIT Allahabad
+
 Aspiring Software / IT Engineer
