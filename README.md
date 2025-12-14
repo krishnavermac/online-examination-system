@@ -126,6 +126,8 @@ exam_management_system/
 <img width="1884" height="879" alt="AddQuestionPage" src="https://github.com/user-attachments/assets/d410aa2a-37cf-408d-9d77-b3e57a2e096f" />
 
 ->Analytics Dashboard
+<img width="1915" height="865" alt="AnalyticsPage" src="https://github.com/user-attachments/assets/832cdded-04b4-48b4-9669-44f019f80928" />
+
 
 
   STUDENT FLOW
