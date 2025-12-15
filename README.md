@@ -4,6 +4,7 @@ A full-stack Online Examination Management System built using Python (Flask) and
 The system supports role-based access for Admin and Student, enabling real-world exam workflows for educational institutions.
 
 
+
 **KEY FEATURES**
 
 👨‍💼 **Admin Module**
@@ -32,6 +33,7 @@ Auto-submission on time expiry
 Instant result and score evaluation
 
 
+
 ⚙️ **System Features**
 
 Role-based authentication (Admin / Student)
@@ -57,42 +59,27 @@ Clean MVC-based Flask architecture
 | Version Control | Git & GitHub       |
 
 
+
 **Project Structure**
 
 exam_management_system/
 
 ├── online_exam_system/
-
 │   ├── app.py
-
 │   ├── admin.py
-
 │   ├── student.py
-
 │   ├── auth.py
-
 │   ├── models.py
-
 │   ├── create_db.py
-
 │   ├── templates/
-
 │   │   ├── start_exam.html
-
 │   │   ├── analytics.html
-
 │   │   ├── admin_dashboard.html
-
 │   │   └── result.html
-
 │   └── static/css/style.css
-
 ├── requirements.txt
-
 ├── README.md
-
 └── .gitignore
-
 
 
 
@@ -114,7 +101,7 @@ exam_management_system/
 
 **SCREENSHOTS**
 
-  ADMIN FLOW
+  **Admin Flow**
   
 -> Admin LogIn Page 
 <img width="1919" height="893" alt="AdminLoginPage" src="https://github.com/user-attachments/assets/dc98187c-d4df-45d3-a512-cf9b36725e03" />
@@ -130,10 +117,13 @@ exam_management_system/
 
 
 
-  STUDENT FLOW
+  **Student Flow**
   
 ->Student Login Page
 <img width="1864" height="808" alt="StudentLoginPage" src="https://github.com/user-attachments/assets/978a92c4-b630-4cc8-b287-cf62e10d21c0" />
+
+->Student Dashboard
+<img width="1919" height="854" alt="StudentDashboard" src="https://github.com/user-attachments/assets/f08f16f6-d8df-4121-8874-ed9be1b431e5" />
 
 ->Online Exam Interface 
 <img width="1892" height="884" alt="OnlineExamInterface" src="https://github.com/user-attachments/assets/bd0b5e46-a261-4428-99f5-141a0b9f82c4" />
@@ -142,6 +132,7 @@ exam_management_system/
 
 ->Result / Score Page 
 <img width="1898" height="877" alt="ResultPage" src="https://github.com/user-attachments/assets/dc4c0864-6619-48fb-a407-555099ad7664" />
+
 
 
 **SECURITY CONSIDERATIONS**
@@ -153,6 +144,7 @@ exam_management_system/
 ->Session-based authentication
 
 ->Database file excluded from version control
+
 
 
 **ANTI-CHEATING FEATURES**
@@ -180,6 +172,7 @@ To ensure exam integrity, the system implements multiple client-side and server-
 These mechanisms together simulate real-world online proctoring constraints.
 
 
+
 **ANALYTICS DASHBOARD**
 
 The admin panel provides exam-level analytics using SQL aggregation queries:
@@ -194,6 +187,8 @@ Exam-Wise Metrics:
 
 4.Lowest score
 
+
+
 **Benefits**
 
 1.Helps identify exam difficulty
@@ -201,6 +196,7 @@ Exam-Wise Metrics:
 2.Provides performance trends
 
 3.Supports data-driven decision making
+
 
 
 **FUTURE ENHANCEMENTS**
@@ -228,6 +224,7 @@ This system can be used by:
 ->Online assessment platforms
 
 ->Internal recruitment tests
+
 
 
 **AUTHOR**
