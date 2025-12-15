@@ -65,20 +65,35 @@ Clean MVC-based Flask architecture
 exam_management_system/
 
 ├── online_exam_system/
+
 │   ├── app.py
+
 │   ├── admin.py
+
 │   ├── student.py
+
 │   ├── auth.py
+
 │   ├── models.py
+
 │   ├── create_db.py
+
 │   ├── templates/
+
 │   │   ├── start_exam.html
+
 │   │   ├── analytics.html
+
 │   │   ├── admin_dashboard.html
+
 │   │   └── result.html
+
 │   └── static/css/style.css
+
 ├── requirements.txt
+
 ├── README.md
+
 └── .gitignore
 
 
