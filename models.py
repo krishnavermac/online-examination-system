@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 
-# ---------------- USER ----------------
+# user
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password_hash, password)
 
 
-# ---------------- EXAM ----------------
+# exam
 class Exam(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
@@ -26,7 +26,7 @@ class Exam(db.Model):
     duration = db.Column(db.Integer, default=5)  # minutes
 
 
-# ---------------- QUESTION ----------------
+# question
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     exam_id = db.Column(db.Integer, db.ForeignKey("exam.id"))
@@ -38,7 +38,7 @@ class Question(db.Model):
     correct_option = db.Column(db.String(1))
 
 
-# ---------------- RESULT ----------------
+# result
 class Result(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
@@ -47,7 +47,7 @@ class Result(db.Model):
     total_questions = db.Column(db.Integer)
 
 
-# ---------------- ANSWER ----------------
+# answer
 class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     result_id = db.Column(db.Integer)
