@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<!-- TIMER DISPLAY -->
+<!-- timer display -->
 <div class="alert alert-warning text-center">
     ⏱️ Time Remaining:
     <strong><span id="timer"></span></strong>
@@ -61,12 +61,12 @@
     </button>
 </form>
 
-<!-- ================= SCRIPT SECTION ================= -->
+<!-- script section -->
 <script>
 const form = document.getElementById("examForm");
 const timerElement = document.getElementById("timer");
 
-// ================= TIMER LOGIC =================
+// timer logic
 let timeLeft = parseInt(form.dataset.duration, 10) * 60;
 
 function updateTimer() {
@@ -89,10 +89,10 @@ function updateTimer() {
 updateTimer();
 setInterval(updateTimer, 1000);
 
-// ================= ANTI-CHEATING LOGIC =================
+// anti cheating logic
 let violationCount = 0;
 
-// Detect tab / window switch
+// detect tab/ window switch
 document.addEventListener("visibilitychange", function () {
     if (document.hidden) {
         violationCount++;
@@ -118,3 +118,4 @@ document.addEventListener("selectstart", e => e.preventDefault());
 </script>
 
 {% endblock %}
+
