@@ -7,7 +7,7 @@ from models import Exam, Question, Result, Answer, db
 
 def init_app(app):
 
-    # ================= ADMIN DASHBOARD =================
+    # admin dashboard 
     @app.route("/admin/dashboard")
     @login_required
     def admin_dashboard():
@@ -20,7 +20,7 @@ def init_app(app):
             exams=exams
         )
 
-    # ================= CREATE EXAM =================
+    # create exam
     @app.route("/admin/create-exam", methods=["GET", "POST"])
     @login_required
     def create_exam():
@@ -47,7 +47,7 @@ def init_app(app):
 
         return render_template("create_exam.html")
 
-    # ================= ADD QUESTION (FIXED) =================
+    # add question
     @app.route("/admin/add-question/<int:exam_id>", methods=["GET", "POST"])
     @login_required
     def add_question(exam_id):
@@ -91,7 +91,7 @@ def init_app(app):
             exam=exam
         )
 
-    # ================= ANALYTICS DASHBOARD =================
+    # analytics dashboard
     @app.route("/admin/analytics")
     @login_required
     def analytics():
@@ -116,3 +116,4 @@ def init_app(app):
             "analytics.html",
             analytics_data=analytics_data
         )
+
