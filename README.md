@@ -33,6 +33,43 @@ The system supports role-based access for Admin and Student, enabling real-world
 - Database-driven exam management
 - Clean MVC-based Flask architecture
 
+  
+**SCREENSHOTS**
+
+  **Admin Flow**
+  
+- Admin LogIn Page 
+<img width="1919" height="893" alt="AdminLoginPage" src="https://github.com/user-attachments/assets/dc98187c-d4df-45d3-a512-cf9b36725e03" />
+
+- Create Exam Page 
+<img width="1919" height="878" alt="CreateExamPage" src="https://github.com/user-attachments/assets/83e16de3-a944-4aed-8e6b-dc227563fc93" />
+
+- Add Questions Page 
+<img width="1884" height="879" alt="AddQuestionPage" src="https://github.com/user-attachments/assets/d410aa2a-37cf-408d-9d77-b3e57a2e096f" />
+
+- Analytics Dashboard
+<img width="1915" height="865" alt="AnalyticsPage" src="https://github.com/user-attachments/assets/832cdded-04b4-48b4-9669-44f019f80928" />
+
+
+
+  **Student Flow**
+  
+- Student Login Page
+<img width="1864" height="808" alt="StudentLoginPage" src="https://github.com/user-attachments/assets/978a92c4-b630-4cc8-b287-cf62e10d21c0" />
+
+- Student Dashboard
+<img width="1919" height="854" alt="StudentDashboard" src="https://github.com/user-attachments/assets/f08f16f6-d8df-4121-8874-ed9be1b431e5" />
+
+- Online Exam Interface 
+<img width="1892" height="884" alt="OnlineExamInterface" src="https://github.com/user-attachments/assets/bd0b5e46-a261-4428-99f5-141a0b9f82c4" />
+
+<img width="1873" height="874" alt="OnlineExamInterface2" src="https://github.com/user-attachments/assets/435c9dc7-1522-4e70-8510-73b7a477bbdd" />
+
+- Result / Score Page 
+<img width="1898" height="877" alt="ResultPage" src="https://github.com/user-attachments/assets/dc4c0864-6619-48fb-a407-555099ad7664" />
+
+
+<br>
 
 **TECH STACK**
 
@@ -88,43 +125,6 @@ exam_management_system/
 5.System evaluates responses automatically
 
 6.Result is displayed instantly
-
-
-
-**SCREENSHOTS**
-
-  **Admin Flow**
-  
-- Admin LogIn Page 
-<img width="1919" height="893" alt="AdminLoginPage" src="https://github.com/user-attachments/assets/dc98187c-d4df-45d3-a512-cf9b36725e03" />
-
-- Create Exam Page 
-<img width="1919" height="878" alt="CreateExamPage" src="https://github.com/user-attachments/assets/83e16de3-a944-4aed-8e6b-dc227563fc93" />
-
-- Add Questions Page 
-<img width="1884" height="879" alt="AddQuestionPage" src="https://github.com/user-attachments/assets/d410aa2a-37cf-408d-9d77-b3e57a2e096f" />
-
-- Analytics Dashboard
-<img width="1915" height="865" alt="AnalyticsPage" src="https://github.com/user-attachments/assets/832cdded-04b4-48b4-9669-44f019f80928" />
-
-
-
-  **Student Flow**
-  
-- Student Login Page
-<img width="1864" height="808" alt="StudentLoginPage" src="https://github.com/user-attachments/assets/978a92c4-b630-4cc8-b287-cf62e10d21c0" />
-
-- Student Dashboard
-<img width="1919" height="854" alt="StudentDashboard" src="https://github.com/user-attachments/assets/f08f16f6-d8df-4121-8874-ed9be1b431e5" />
-
-- Online Exam Interface 
-<img width="1892" height="884" alt="OnlineExamInterface" src="https://github.com/user-attachments/assets/bd0b5e46-a261-4428-99f5-141a0b9f82c4" />
-
-<img width="1873" height="874" alt="OnlineExamInterface2" src="https://github.com/user-attachments/assets/435c9dc7-1522-4e70-8510-73b7a477bbdd" />
-
-- Result / Score Page 
-<img width="1898" height="877" alt="ResultPage" src="https://github.com/user-attachments/assets/dc4c0864-6619-48fb-a407-555099ad7664" />
-
 
 
 **SECURITY CONSIDERATIONS**
