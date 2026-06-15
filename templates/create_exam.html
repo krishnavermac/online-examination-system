@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Create Exam</h3>
+
+<form method="POST" class="col-md-6">
+    <input name="title" class="form-control mb-2" placeholder="Exam title" required>
+    <textarea name="description" class="form-control mb-2" placeholder="Description"></textarea>
+    <input type="number" name="duration" class="form-control mb-2" value="5" required>
+    <button class="btn btn-success w-100">Create</button>
+</form>
+{% endblock %}

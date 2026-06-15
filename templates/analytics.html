@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Analytics Dashboard{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">📊 Exam Analytics Dashboard</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Exam Name</th>
+            <th>Total Attempts</th>
+            <th>Average Score</th>
+            <th>Highest Score</th>
+            <th>Lowest Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for exam_id, title, attempts, avg, max_s, min_s in analytics_data %}
+        <tr>
+            <td>{{ title }}</td>
+            <td>{{ attempts or 0 }}</td>
+            <td>{{ avg | round(2) if avg else 0 }}</td>
+            <td>{{ max_s or 0 }}</td>
+            <td>{{ min_s or 0 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

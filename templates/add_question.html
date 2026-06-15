@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Add Question{% endblock %}
+
+{% block content %}
+<h3 class="dashboard-title">Add Question</h3>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-body">
+
+                <form method="POST">
+
+                    <div class="mb-3">
+                        <label class="form-label">Question</label>
+                        <textarea name="question_text" class="form-control"
+                                  rows="2" required></textarea>
+                    </div>
+
+                    <div class="mb-2">
+                        <input name="option_a" class="form-control" placeholder="Option A" required>
+                    </div>
+
+                    <div class="mb-2">
+                        <input name="option_b" class="form-control" placeholder="Option B" required>
+                    </div>
+
+                    <div class="mb-2">
+                        <input name="option_c" class="form-control" placeholder="Option C" required>
+                    </div>
+
+                    <div class="mb-2">
+                        <input name="option_d" class="form-control" placeholder="Option D" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Correct Answer</label>
+                        <select name="correct_option" class="form-select" required>
+                            <option value="A">Option A</option>
+                            <option value="B">Option B</option>
+                            <option value="C">Option C</option>
+                            <option value="D">Option D</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-success w-100">
+                        Save Question
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
