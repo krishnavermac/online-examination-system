@@ -3,7 +3,6 @@
 
 {% block content %}
 
-<!-- TIMER DISPLAY -->
 <div class="alert alert-warning text-center">
     ⏱️ Time Remaining:
     <strong><span id="timer"></span></strong>
@@ -61,12 +60,10 @@
     </button>
 </form>
 
-<!-- ================= SCRIPT SECTION ================= -->
 <script>
 const form = document.getElementById("examForm");
 const timerElement = document.getElementById("timer");
 
-// ================= TIMER LOGIC =================
 let timeLeft = parseInt(form.dataset.duration, 10) * 60;
 
 function updateTimer() {
@@ -89,10 +86,8 @@ function updateTimer() {
 updateTimer();
 setInterval(updateTimer, 1000);
 
-// ================= ANTI-CHEATING LOGIC =================
 let violationCount = 0;
 
-// Detect tab / window switch
 document.addEventListener("visibilitychange", function () {
     if (document.hidden) {
         violationCount++;
@@ -105,12 +100,10 @@ document.addEventListener("visibilitychange", function () {
     }
 });
 
-// Disable right-click
 document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
 });
 
-// Disable copy, paste, cut, text selection
 document.addEventListener("copy", e => e.preventDefault());
 document.addEventListener("paste", e => e.preventDefault());
 document.addEventListener("cut", e => e.preventDefault());
