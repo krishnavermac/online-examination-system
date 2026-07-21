@@ -7,7 +7,6 @@ from models import Exam, Question, Result, Answer, db
 
 def init_app(app):
 
-    # admin dashboard 
     @app.route("/admin/dashboard")
     @login_required
     def admin_dashboard():
@@ -20,7 +19,6 @@ def init_app(app):
             exams=exams
         )
 
-    # create exam
     @app.route("/admin/create-exam", methods=["GET", "POST"])
     @login_required
     def create_exam():
@@ -47,7 +45,6 @@ def init_app(app):
 
         return render_template("create_exam.html")
 
-    # add question
     @app.route("/admin/add-question/<int:exam_id>", methods=["GET", "POST"])
     @login_required
     def add_question(exam_id):
@@ -64,7 +61,6 @@ def init_app(app):
             option_d = request.form.get("option_d")
             correct_option = request.form.get("correct_option")
 
-            # Validation (prevents BadRequestKeyError)
             if not all([question_text, option_a, option_b, option_c, option_d]):
                 return "All fields are required", 400
 
@@ -73,7 +69,7 @@ def init_app(app):
 
             question = Question(
                 exam_id=exam_id,
-                question_text=question_text,   # ✅ MATCHES HTML
+                question_text=question_text,   
                 option_a=option_a,
                 option_b=option_b,
                 option_c=option_c,
@@ -91,7 +87,6 @@ def init_app(app):
             exam=exam
         )
 
-    # analytics dashboard
     @app.route("/admin/analytics")
     @login_required
     def analytics():
