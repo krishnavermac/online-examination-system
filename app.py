@@ -20,7 +20,6 @@ login_manager.init_app(app)
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# register routes
 auth.init_app(app)
 admin.init_app(app)
 student.init_app(app)
